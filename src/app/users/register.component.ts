@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router'
 
-import { DataRepositoryService } from '../services/data-repository.service'
+import { UserRepositoryService } from '../services/user-repository.service'
 import { IUser } from './user.model';
 
 @Component({
@@ -18,7 +18,7 @@ export class RegisterComponent {
   password: FormControl;
   saving: boolean = false;
 
-  constructor(private router: Router, private dataRepository: DataRepositoryService) {
+  constructor(private router: Router, private dataRepository: UserRepositoryService) {
     this.firstName = new FormControl('', Validators.required);
     this.lastName = new FormControl('', Validators.required);
     this.email = new FormControl('', Validators.required);
