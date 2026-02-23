@@ -16,7 +16,7 @@ export class CatalogComponent {
   // not a best practice to reference a service directly in HTML
   constructor(
     public userRepository: UserRepositoryService,
-    public catalogRepository: CatalogRepositoryService
+    private catalogRepository: CatalogRepositoryService
   ) { }
 
   ngOnInit() {

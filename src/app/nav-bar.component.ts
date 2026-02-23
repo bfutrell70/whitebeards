@@ -15,13 +15,13 @@ import { UserRepositoryService } from "./services/user-repository.service";
 })
 
 export class NavBarComponent  {
-  constructor(private dataRepository:UserRepositoryService) {}
+  constructor(private userRepository:UserRepositoryService) {}
 
   get currentUser() {
-    return this.dataRepository.currentUser;
+    return this.userRepository.currentUser;
   }
 
   handleSignOut() {
-    this.dataRepository.currentUser = null;
+    this.userRepository.currentUser = null;
   }
 }
