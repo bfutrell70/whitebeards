@@ -1,5 +1,7 @@
+// third party imports first
 import { Component } from '@angular/core';
 
+// blank line then project imports next to make them easier to find
 import { IClass } from '../users/class.model';
 import { CatalogRepositoryService } from './catalog-repository-service';
 import { UserRepositoryService } from '../services/user-repository.service';
