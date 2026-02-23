@@ -9,8 +9,8 @@ export class UserRepositoryService {
   constructor() { }
 
   saveUser(user: IUser): Observable<any> {
-    user.classes = user.classes || [];
-    this.currentUser = user;
+    let classes = user.classes || [];
+    this.currentUser = {...user, classes: [...classes]};
 
     return timer(1000);
   }
@@ -22,7 +22,12 @@ export class UserRepositoryService {
     if (this.currentUser.classes.includes(classId))
       return throwError(() => new Error('Already enrolled'));
 
-    this.currentUser.classes.push(classId);
+    // concat returns a new array
+    // {...   } returns a new object
+    this.currentUser = {
+      ...this.currentUser, 
+      classes: this.currentUser.classes.concat(classId)
+    };
 
     return timer(1000);
   }
@@ -34,7 +39,10 @@ export class UserRepositoryService {
     if (!this.currentUser.classes.includes(classId))
       return throwError(() => new Error('Not enrolled'));
 
-    this.currentUser.classes = this.currentUser.classes.filter((c: string) => c !== classId);
+    this.currentUser = {
+      ...this.currentUser, 
+      classes: this.currentUser.classes.filter((c: string) => c !== classId) 
+    };
 
     return timer(1000);
   }
