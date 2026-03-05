@@ -1,5 +1,5 @@
 // third party imports first
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 // blank line then project imports next to make them easier to find
 import { IClass } from '../users/class.model';
@@ -11,7 +11,7 @@ import { FilterClassesService } from './filter-classes.service';
   styleUrls: ['./catalog.component.css'],
   templateUrl: './catalog.component.html'
 })
-export class CatalogComponent {
+export class CatalogComponent implements OnInit, OnChanges {
   classes: IClass[] = [];
   visibleClasses: IClass[] = [];
 
@@ -26,6 +26,10 @@ export class CatalogComponent {
   ngOnInit() {
     this.catalogRepository.getCatalog()
       .subscribe((classes: IClass[]) => { this.classes = classes; this.applyFilter('') });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    
   }
 
   enroll(classToEnroll: IClass) {
