@@ -2,7 +2,17 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, EMPTY, throwError, timer } from 'rxjs';
 import { IUser } from '../users/user.model';
 
-@Injectable()
+// providedIn tells Angular where to inject the service
+// if root is available for the entire application
+// makes the service a singleton - only one instance of the service
+// - other option is 'platform' if multiple Angular applications are using the service, but isn't common
+// - previous options were 'any'
+// - could provide a module, but it has been deprecated
+// - if providedIn not set, when a component specifies a service as a provider it gets its own
+//   copy of the service
+@Injectable({
+  providedIn: 'root'
+})
 export class UserRepositoryService {
   currentUser: IUser | null = null;
 

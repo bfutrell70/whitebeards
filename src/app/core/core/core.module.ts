@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 
 import { NavBarComponent } from './nav-bar.component';
 import { AccountMenuComponent } from './account-menu.component';
-import { UserRepositoryService } from 'src/app/services/user-repository.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { UserRepositoryService } from 'src/app/services/user-repository.service'
     AccountMenuComponent
   ],
   providers: [
-    UserRepositoryService,
   ]
 })
 export class CoreModule { }
