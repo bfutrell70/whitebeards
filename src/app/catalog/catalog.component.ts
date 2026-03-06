@@ -1,5 +1,5 @@
 // third party imports first
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 // blank line then project imports next to make them easier to find
 import { IClass } from '../users/class.model';
@@ -9,7 +9,9 @@ import { FilterClassesService } from './filter-classes.service';
 
 @Component({
   styleUrls: ['./catalog.component.css'],
-  templateUrl: './catalog.component.html'
+  templateUrl: './catalog.component.html',
+  // only triggers when object reference changes, not individual properties
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CatalogComponent implements OnInit, OnChanges {
   classes: IClass[] = [];
