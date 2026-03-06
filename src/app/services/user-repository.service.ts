@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject, EMPTY, throwError, timer } from 'rxjs';
 import { IUser } from '../users/user.model';
+import { concat } from 'lodash';
 
 // providedIn tells Angular where to inject the service
 // if root is available for the entire application
@@ -34,9 +35,14 @@ export class UserRepositoryService {
 
     // concat returns a new array
     // {...   } returns a new object
+    // this.currentUser = {
+    //   ...this.currentUser, 
+    //   classes: this.currentUser.classes.concat(classId)
+    // };
+    // using lodash to concat
     this.currentUser = {
       ...this.currentUser, 
-      classes: this.currentUser.classes.concat(classId)
+      classes: concat(this.currentUser.classes, classId)
     };
 
     return timer(1000);
